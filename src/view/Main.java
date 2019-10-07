@@ -51,8 +51,9 @@ public class Main extends PApplet {
 			if(word.length() > 0) {
 				word.deleteCharAt(word.length()-1);
 			}
-		} else {
+		} else if((key <= 122 && key >= 97) || (key >= 65 && key <= 90)){
 			word.append(key);
+			System.out.println((int)key);
 		}
 	}
 
