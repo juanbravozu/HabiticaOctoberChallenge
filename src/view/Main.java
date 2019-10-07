@@ -9,6 +9,7 @@ public class Main extends PApplet {
 	private Logic log;
 	private PFont fontBig, fontSmall;
 	private StringBuffer word;
+	private String points;
 	
 	public static void main(String[] args) {
 		PApplet.main("view.Main");
@@ -29,6 +30,7 @@ public class Main extends PApplet {
 		fontSmall = createFont("RobotoSlab-Bold.ttf", 18);
 		log = new Logic(this);
 		word = new StringBuffer();
+		points = "";
 	}
 	
 	public void draw() {
@@ -36,7 +38,8 @@ public class Main extends PApplet {
 		fill(255);
 		textFont(fontBig);
 		text("Type a word", width/2, 200);
-		text(word.toString(), width/2, height/2);
+		text(word.toString(), width/2, height/2-50);
+		text(points, width/2, height/2+50);
 		rect(width/2, height/2+195, 200, 50, 25);
 		fill(219, 33, 33);
 		textFont(fontSmall);
@@ -53,4 +56,11 @@ public class Main extends PApplet {
 		}
 	}
 
+	public void mousePressed() {
+		if(mouseX > width/2-100 && mouseX < width/2+100 &&
+		mouseY > height/2+95 && mouseY < height/2+295) {
+			points = log.calculateValue(word.toString());
+			System.out.println("area sensible");
+		}
+	}
 }
